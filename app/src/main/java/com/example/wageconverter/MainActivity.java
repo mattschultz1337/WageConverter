@@ -14,6 +14,8 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -24,6 +26,11 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         final EditText wage = findViewById(R.id.HourlyWage);
         final TextView mainText = findViewById(R.id.Pennies);
+
+        final TextView yearlyText = findViewById(R.id.Yearly);
+
+        final TextView cokeText = findViewById(R.id.coke);
+
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -31,6 +38,9 @@ public class MainActivity extends AppCompatActivity {
                 //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                  //       .setAction("Action", null).show();
                 double value = 0;
+                double Potter = 0;
+                double YearlyNum = 0;
+                double cokeNum = 30000;
                 String text = wage.getText().toString();
                 if(!text.isEmpty())
                     try
@@ -41,8 +51,13 @@ public class MainActivity extends AppCompatActivity {
                         // this means it is not double
                         e1.printStackTrace();
                     }
-
-                mainText.setText("" + value + "");
+                Potter = value * 19.65;
+                DecimalFormat df = new DecimalFormat("#.00");
+                mainText.setText("$" + df.format(Potter) + "");
+                YearlyNum = value * 2080;
+                yearlyText.setText("$" + df.format((YearlyNum)) + "");
+                cokeNum = (cokeNum / value)/8;
+                cokeText.setText(df.format(cokeNum));
             }
         });
     }
