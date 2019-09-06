@@ -31,6 +31,10 @@ public class MainActivity extends AppCompatActivity {
 
         final TextView cokeText = findViewById(R.id.coke);
 
+        final TextView poopText = findViewById(R.id.poop);
+
+        final TextView harvText = findViewById(R.id.harvey);
+
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
                 double Potter = 0;
                 double YearlyNum = 0;
                 double cokeNum = 30000;
+                double poopNum = 0;
+                double HarvNum = 476266.54;
                 String text = wage.getText().toString();
                 if(!text.isEmpty())
                     try
@@ -58,6 +64,11 @@ public class MainActivity extends AppCompatActivity {
                 yearlyText.setText("$" + df.format((YearlyNum)) + "");
                 cokeNum = (cokeNum / value)/8;
                 cokeText.setText(df.format(cokeNum));
+                poopNum = (value * 52);
+                poopText.setText("$" + df.format(poopNum));
+
+                HarvNum = (YearlyNum / HarvNum) * 100;
+                harvText.setText(df.format(HarvNum) + "%");
             }
         });
     }
